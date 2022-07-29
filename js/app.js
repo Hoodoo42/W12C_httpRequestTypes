@@ -53,3 +53,24 @@ axios.request({
 
 
 }).then(postUpdateSuccess).catch(postUpdateFailure);
+
+
+function deleteSuccess(response){
+  document.body.insertAdjacentHTML(`beforeend`, `
+  <h3>your post has been deleted</h3>`)
+}
+
+
+function deleteFailure(error){
+    document.body.insertAdjacentHTML(`beforeend`, `
+  <h3>your post has NOT been deleted</h3>`)
+}
+
+
+// this axios request method delete, deletes the post targeted in the endpoint
+axios.request({
+    url: `https://jsonplaceholder.typicode.com/posts/1`, 
+
+    method: `DELETE`,
+
+}).then(deleteSuccess).catch(deleteFailure);
