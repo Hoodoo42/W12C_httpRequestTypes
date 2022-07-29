@@ -86,3 +86,28 @@ axios
 // creating an axios request that will run when a button is clicked. This sets the button with an eventlistener
 let submit = document.getElementById(`submit_button`);
 submit.addEventListener(`click`, postPost);
+
+
+function getPostSuccess(response){
+    for(i=0; i<response[`data`].length; i++)
+document.body.insertAdjacentHTML(`beforeend`, 
+    `<h2>${response[`data`][i][`title`]}</h2>
+    <h3>${response[`data`][i][`userId`]}</h3>
+    <h3>${response[`data`][i][`body`]}</h3>`)
+    
+}
+
+function getPostFailure(error){
+    document.body.insertAdjacentHTML(`beforeend`, `
+    <h3>Post Error!</h3>`)
+}
+
+
+axios.request({
+
+    url:    `https://jsonplaceholder.typicode.com/posts`
+
+
+
+}).then(getPostSuccess).catch(getPostFailure);
+
