@@ -31,8 +31,6 @@ function postFailure(error) {
   statusMessage[`innerHTML`] = `<h3>Error!</h3>`;
 }
 
-
-
 // PART TWO - Method PATCH success/failure Functions
 function postUpdateSuccess(response) {
   let statusMessage = document.getElementById(`status_message`);
@@ -63,14 +61,12 @@ function deleteFailure(error) {
 function getPostSuccess(response) {
   for (i = 0; i < response[`data`].length; i++) {
     let posts = document.getElementById(`posts_container`);
-    
-    posts[`innerHTML`] = posts[`innerHTML`] +
+
+    posts[`innerHTML`] =
+      posts[`innerHTML`] +
       `<h2>${response[`data`][i][`title`]}</h2>` +
       `<h3>${response[`data`][i][`userId`]}</h3>` +
       `<h3 class="displayed_post_body">${response[`data`][i][`body`]}</h3>`;
-    
-
-   
   }
 }
 // document.body.insertAdjacentHTML(`beforeend`,
@@ -88,21 +84,20 @@ function getPostFailure(error) {
 
 //  AXIOS REQUESTS --
 
-    // PART TWO - Method PATCH axios.request
+// PART TWO - Method PATCH axios.request
 // this axios request is a patch, it will take the new data in title, and update the old post title.
 axios
-.request({
-  url: `https://jsonplaceholder.typicode.com/posts/1`,
+  .request({
+    url: `https://jsonplaceholder.typicode.com/posts/1`,
 
-  method: `PATCH`,
+    method: `PATCH`,
 
-  data: {
-    title: `This will be the new title.`,
-  },
-})
-.then(postUpdateSuccess)
-.catch(postUpdateFailure);
-
+    data: {
+      title: `This will be the new title.`,
+    },
+  })
+  .then(postUpdateSuccess)
+  .catch(postUpdateFailure);
 
 //   PART THREE - Method DELETE axios.request
 // this axios request method delete, deletes the post targeted in the endpoint
@@ -128,11 +123,6 @@ axios
 // creating an axios request that will run when a button is clicked. This sets the button with an eventlistener
 let submit = document.getElementById(`submit_button`);
 submit.addEventListener(`click`, postPost);
-
-
-
-
-
 
 // starting to make the post update happen with button click not just on the page load.
 
