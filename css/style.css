@@ -1,0 +1,9 @@
+#posts_container{
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.displayed_post_body{
+    width: 50%;
+}
